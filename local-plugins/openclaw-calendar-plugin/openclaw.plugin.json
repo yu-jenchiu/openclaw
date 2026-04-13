@@ -1,0 +1,24 @@
+{
+  "id": "calendar-tools",
+  "name": "Calendar Tools",
+  "description": "Google Calendar query/add/delete tools for OpenClaw",
+  "version": "0.1.0",
+  "tools": [
+    "calendar_today",
+    "calendar_tomorrow",
+    "calendar_week",
+    "calendar_date",
+    "calendar_add",
+    "calendar_delete"
+  ],
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+      "runtimeBaseDir": {
+        "type": "string",
+        "description": "Directory containing credentials.json and token.json on the runtime host"
+      }
+    }
+  }
+}
