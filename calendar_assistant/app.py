@@ -108,7 +108,12 @@ async def handle_telegram_message(update: Update, context: ContextTypes.DEFAULT_
 
 def build_cli_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description="Google Calendar assistant tester")
-    parser.add_argument("text", help="輸入一句要解析的文字")
+    parser.add_argument(
+        "text",
+        nargs="?",
+        default="",
+        help="輸入一句要解析的文字（啟動 Telegram 模式時可留空）",
+    )
     parser.add_argument(
         "--mode",
         choices=["auto", "fixed", "natural"],
@@ -136,6 +141,9 @@ def build_cli_parser() -> argparse.ArgumentParser:
 def run_cli() -> None:
     parser = build_cli_parser()
     args = parser.parse_args()
+
+    if not args.telegram and not args.text.strip():
+        parser.error("請提供要解析的文字")
 
     if args.telegram:
         token = settings.__dict__.get("telegram_bot_token") or SystemExit(
