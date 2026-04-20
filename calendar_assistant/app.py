@@ -8,6 +8,7 @@ from typing import Dict, List, Optional
 
 from calendar_writer import CalendarWriter
 from parser import EventRequest, detect_mode, parse_fixed_format, parse_natural_language
+from config import settings
 
 try:
     from telegram import Update
