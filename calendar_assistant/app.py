@@ -146,7 +146,7 @@ def run_cli() -> None:
         parser.error("請提供要解析的文字")
 
     if args.telegram:
-        token = settings.__dict__.get("telegram_bot_token") or SystemExit(
+        token = settings.telegram_bot_token or SystemExit(
             "請在環境變數 TELEGRAM_BOT_TOKEN 中設定 Bot Token"
         )
         run_telegram_bot(str(token))
